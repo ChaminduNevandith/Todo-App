@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+    <!-- Title of the HTML page -->
+    <title>Todo App</title>
+    <!-- Linking external stylesheet , Fonts , icons-->
+    <link rel="stylesheet" href="/static/stylesheets/style.css" type="text/css">
+  
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+        crossorigin="anonymous">
+</head>
+<body>
+    <!-- Main Container for the todo list -->
+    <div class="todo-container">
+        <!-- Heading  -->
+        <h2>To-Do List</h2>
+        
+        <div class="todo">
+
+            <!-- Form for adding a new todo task -->
+            <form action="/" method="POST" class="todo-header">
+                <!-- Input field for entering todo task content -->
+                <input type="text" name="content">
+                <!-- Button for submitting the form -->
+                <button type="submit"><span class="fas fa-plus"></span></button>
+            </form>
+            
+            <!-- List of todo tasks -->
+            <ul class="todo-list">
+                <!-- Loop through each todo task and display its details -->
+                <% todoTasks.forEach(details => { %>
+                <!-- Individual todo list item -->
+                <li class="todo-list-item">
+                    <!-- Displaying the content of the todo task -->
+                    <div class="todo-list-item-name"><%= details.content %></div>
+                    <!-- Link for editing the todo task -->
+                    <a href="/edit/<%= details._id %>" class="edit">
+                        <span class="fas fa-edit"></span>
+                    </a>
+                    <!-- Link for removing the todo task -->
+                    <a href="/remove/<%= details._id %>" class="remove">
+                        <span class="fas fa-times"></span>
+                    </a>
+                </li>
+                <% }) %>
+            </ul>
+        </div>
+    </div>
+</body>
